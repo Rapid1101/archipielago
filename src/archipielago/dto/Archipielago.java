@@ -33,10 +33,7 @@ public class Archipielago {
 		this.segmento2 = segmento2;
 	}
 
-	@Override
-	public String toString() {
-		return "Archipielago [segmento1=" + segmento1 + ", segmento2=" + segmento2 + "]";
-	}
+	
 
 	public boolean isValido() {
 		return valido;
@@ -44,25 +41,41 @@ public class Archipielago {
 
 	public void setValido() {
 		int contador=0;
-		if(segmento1.getIsla1().getX()==segmento1.getIsla2().getX()) {
+		if(segmento1.getIsla1()==segmento2.getIsla1()) {
 			contador++;
 		}
 		
-		if(segmento1.getIsla1().getY()==segmento1.getIsla2().getY()) {
-			contador++;
-		}
-
-		if(segmento1.getIsla1().getX()==segmento1.getIsla2().getY()) {
+		if(segmento1.getIsla1()==segmento2.getIsla2()) {
 			contador++;
 		}
 		
-		if(segmento1.getIsla1().getY()==segmento1.getIsla2().getX()) {
+		
+		if(segmento1.getIsla2()==segmento2.getIsla1()) {
+			contador++;
+		}
+		
+		if(segmento1.getIsla2()==segmento2.getIsla2()) {
 			contador++;
 		}
 		
 		valido=contador==1;
 		
+		
 	}
+
+	@Override
+	public String toString() {
+		return "Archipielago [segmento1=" + segmento1 + ", segmento2=" + segmento2 + ", valido=" + valido + "]";
+	}
+
+
+	
+	
+	
+
+	
+
+	
 	
 	
 	

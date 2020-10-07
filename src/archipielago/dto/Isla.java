@@ -33,11 +33,19 @@ public class Isla {
 	}
 
 	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
+
+	@Override
 	public String toString() {
 		return "Isla [x=" + x + ", y=" + y + "]";
 	}
+
+
 	
-	
+
 	
 	
 	

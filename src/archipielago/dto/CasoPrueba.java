@@ -1,21 +1,22 @@
 package archipielago.dto;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CasoPrueba {
-	
+
 	private List<Isla> islas;
 	private List<Segmento> segmento;
 	private Map<Double, List<Segmento>> segmentosAgrupadosPorLongitud;
 	private Map<Double, List<Archipielago>> archipielagosAgrupadosPorLongitud;
-	
 
 	public CasoPrueba() {
 		super();
-		
+
 		this.islas = new ArrayList<>();
 		this.segmento = new ArrayList<>();
 		this.segmentosAgrupadosPorLongitud = new HashMap<Double, List<Segmento>>();
@@ -50,24 +51,19 @@ public class CasoPrueba {
 		return archipielagosAgrupadosPorLongitud;
 	}
 
-	public void setArchipielagosAgrupadosPorLongitud(Map<Double, List<Archipielago>> archipielagosAgrupadosPorLongitud) {
+	public void setArchipielagosAgrupadosPorLongitud(
+			Map<Double, List<Archipielago>> archipielagosAgrupadosPorLongitud) {
 		this.archipielagosAgrupadosPorLongitud = archipielagosAgrupadosPorLongitud;
 	}
 
-	
-	
 	public long archipielagosValidos() {
-		 List<Archipielago> archipielago = new ArrayList<Archipielago>();
-		 archipielagosAgrupadosPorLongitud.forEach((k,v) ->{
-			archipielago.addAll(v);
-	});
-		 
-return archipielago.stream()
-		.filter(Archipielago::isValido)
-		.count();
-			
-	
-	}	
-	
+		
+		return archipielagosAgrupadosPorLongitud.values()
+                .stream()
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList())
+                .stream().filter(Archipielago::isValido).count();
+
+	}
 
 }

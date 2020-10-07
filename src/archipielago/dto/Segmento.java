@@ -25,10 +25,7 @@ public class Segmento {
 	public void setIsla2(Isla isla2) {
 		this.isla2 = isla2;
 	}
-	@Override
-	public String toString() {
-		return "Segmento [isla1=" + isla1 + ", isla2=" + isla2 + "]";
-	}
+	
 	public double getLongitud() {
 		return longitud;
 	}
@@ -37,6 +34,16 @@ public class Segmento {
 		longitud=Math.sqrt(Math.pow((isla1.getX()-isla2.getX()), 2) + Math.pow((isla1.getY()-isla2.getY()), 2));
 		
 	}
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
+	@Override
+	public String toString() {
+		return "Segmento [isla1=" + isla1 + ", isla2=" + isla2 + ", longitud=" + longitud + "]";
+	}
+
 	
 	
 	
